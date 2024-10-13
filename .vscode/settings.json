@@ -1,0 +1,8 @@
+{
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true,
+    "codetogether.virtualCursorJoin": "ownVirtualCursor",
+    "cSpell.words": [
+        "Supabase"
+    ]
+}
