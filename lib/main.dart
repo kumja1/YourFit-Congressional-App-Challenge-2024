@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:yourfit/auth/signin_screen.dart';
-import 'services/get_it/get_it.dart';
+import 'src/app_router.dart';
+import 'src/services/get_it/get_it.dart';
+import 'src/utils/constants.dart';
 
 void main() async {
   await configureServices();
-  runApp(const YourFitApp());
+  runApp(YourFitApp());
 }
 
 class YourFitApp extends StatelessWidget {
-  const YourFitApp({super.key});
+  final _appRouter = getIt<AppRouter>();
+
+   YourFitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
       title: 'YourFit App',
       theme: ThemeData(
         useMaterial3: true,
@@ -21,21 +25,8 @@ class YourFitApp extends StatelessWidget {
             dynamicSchemeVariant: DynamicSchemeVariant.fidelity),
         fontFamily: "Lilita",
       ),
-      home: AppScaffold(),
     );
   }
 }
 
-class AppScaffold extends StatefulWidget {
-  const AppScaffold({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _AppScaffold();
-}
-
-class _AppScaffold extends State<AppScaffold> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: const SigninScreen());
-  }
-}

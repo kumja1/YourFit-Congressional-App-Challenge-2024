@@ -9,26 +9,29 @@ environment:
   sdk: ^3.4.3
 
 dependencies:
+  table_calendar: ^3.0.0
+
   flutter:
     sdk: flutter
-  permission_handler:
   english_words: ^4.0.0
-  provider: ^6.0.0
   supabase_auth_ui: ^0.5.1
   envied: ^0.5.4+1
   envied_flutter: ^0.3.0+1
   flutter_contacts: ^1.1.9+2
-  kalender: ^0.4.1
-  supabase_flutter: 
+  supabase_flutter:
   get_it: ^8.0.0
   intl:
   injectable: ^2.5.0
   google_sign_in: ^6.2.1
   async_button_builder: ^3.0.0+1
   sign_in_with_apple: ^6.1.3
-  flutter_heatmap_calendar: ^1.0.5
-  flutter_calendar_week: ^3.0.2
   groq_sdk:
+  auto_route: ^9.2.2
+  typewritertext: ^3.0.9
+  flutter_animate: ^4.5.0
+  flutter_js: ^0.8.1
+  ffi: ^2.1.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,9 +40,17 @@ dev_dependencies:
   injectable_generator: ^2.6.2
   build_runner: ^2.4.12
   envied_generator: ^0.5.4+1
+  auto_route_generator: ^9.0.0
+
+
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/js/
+    - assets/json/
+
   fonts:
     - family: Fredoka
       fonts:
@@ -47,10 +58,8 @@ flutter:
           style: normal
           weight: 100
 
-
     - family: Lilita
-      fonts: 
-      - asset: assets/fonts/LilitaOne-Regular.ttf
-        style: normal
-        weight: 100
-        
+      fonts:
+        - asset: assets/fonts/LilitaOne-Regular.ttf
+          style: normal
+          weight: 100

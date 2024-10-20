@@ -4,5 +4,6 @@
     "codetogether.virtualCursorJoin": "ownVirtualCursor",
     "cSpell.words": [
         "Supabase"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
