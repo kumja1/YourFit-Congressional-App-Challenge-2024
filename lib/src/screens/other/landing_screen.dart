@@ -19,7 +19,7 @@ class LandingScreen extends StatelessWidget {
               Text.rich(
                 style: TextStyle(fontSize: 90),
                 TextSpan(
-                  text: "Get fit\n",
+                  text: "Stay fit\n",
                   children: [
                     TextSpan(
                         text: "your\n",

@@ -10,9 +10,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
-import 'package:yourfit/src/auth/signin_screen.dart' as _i8;
-import 'package:yourfit/src/auth/signup_screen.dart' as _i9;
 import 'package:yourfit/src/screens/main_screen.dart' as _i4;
+import 'package:yourfit/src/screens/other/auth/signin_screen.dart' as _i8;
+import 'package:yourfit/src/screens/other/auth/signup_screen.dart' as _i9;
 import 'package:yourfit/src/screens/other/landing_screen.dart' as _i3;
 import 'package:yourfit/src/screens/other/settings_screen.dart' as _i7;
 import 'package:yourfit/src/screens/other/splash_screen.dart' as _i10;

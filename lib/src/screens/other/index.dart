@@ -1,2 +1,2 @@
 export 'settings_screen.dart';
-export '../../auth/index.dart';
+export 'auth/index.dart';

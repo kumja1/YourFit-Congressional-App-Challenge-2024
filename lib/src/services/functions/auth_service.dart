@@ -15,14 +15,11 @@ class AuthService {
     _userService = userService;
   }
 
-  @postConstruct
-  void init() async {
-    try {
-      AuthResponse response = await _auth.refreshSession();
-      if (response.user != null) {
-        currentUser = await _userService.getUser(response.user!.id);
-      }
-    } catch (_) {}
+  Future<void> loadSession() async {
+    AuthResponse response = await _auth.refreshSession();
+    if (response.user != null) {
+      currentUser = await _userService.getUser(response.user!.id);
+    }
   }
 
   Future<void> signInWithEmail({
@@ -99,7 +96,4 @@ class AuthService {
 
     return response;
   }
-
-  @disposeMethod
-  dispose() {}
 }

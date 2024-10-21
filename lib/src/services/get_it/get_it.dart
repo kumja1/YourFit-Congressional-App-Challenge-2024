@@ -12,7 +12,7 @@ import 'package:flutter_js/flutter_js.dart';
 )
 Future<void> configureServices() async {
   await Supabase.initialize(url: Env.supabaseUrl, anonKey: Env.supabaseKey);
-  getIt.registerLazySingleton<JavascriptRuntime>(getJavascriptRuntime,dispose:(i)=>i.dispose(),);
+  getIt.registerSingleton<JavascriptRuntime>(getJavascriptRuntime(),dispose:(i)=>i.dispose(),);
   getIt.init();
 }
 // hello lol

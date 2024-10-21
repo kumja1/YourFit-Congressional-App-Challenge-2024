@@ -29,9 +29,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i342.AppRouter>(() => _i342.AppRouter());
     gh.singleton<_i180.UserService>(() => _i180.UserService());
     gh.singleton<_i1007.AuthService>(
-      () => _i1007.AuthService(gh<_i180.UserService>())..init(),
-      dispose: (i) => i.dispose(),
-    );
+        () => _i1007.AuthService(gh<_i180.UserService>()));
     return this;
   }
 }

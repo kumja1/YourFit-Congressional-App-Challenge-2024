@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:yourfit/src/utils/constants.dart';
 import 'package:yourfit/src/widgets/text_icon_button.dart';
-import '../services/functions/index.dart';
+import '../../../services/functions/index.dart';
 
 @RoutePage()
 class SigninScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SigninScreenState extends State<SigninScreen> {
               height: 50.0,
             ),
             Text(
-              "Signin to YourFit",
+              "Sign in",
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(height: 30.0),

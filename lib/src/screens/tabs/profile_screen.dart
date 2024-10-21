@@ -14,7 +14,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   late AuthService _authService = getIt<AuthService>();
-  late FitnessLLMService _llmService = getIt<FitnessLLMService>();
+
   String _text = "";
 
   @override
@@ -22,7 +22,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: 30,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                 
+                },
+                icon: Icon(Icons.settings))
+          ],
         ),
         body: Column(
           children: <Widget>[
@@ -35,11 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: CircleAvatar(
                   backgroundColor: Color.fromRGBO(235, 227, 227, 0),
                   maxRadius: 50,
-                  child: Icon(
-                    Icons.account_circle,
-                    color: Color.fromARGB(255, 134, 130, 130),
-                    size: 52.0
-                  ),
+                  child: Icon(Icons.account_circle,
+                      color: Color.fromARGB(255, 134, 130, 130), size: 52.0),
                 )),
             SizedBox(height: 16),
             Text(
@@ -81,12 +84,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    t().then((te)=>_text = te);
     super.initState();
   }
 
-  Future<String> t() async {
-    return await _llmService.getExercisesForUser(_authService.currentUser!);
-  }
-
+ 
 }

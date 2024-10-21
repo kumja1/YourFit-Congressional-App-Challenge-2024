@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_js/flutter_js.dart';
 import 'package:injectable/injectable.dart';
-import '../models/index.dart';
 import '../../utils/constants.dart';
 import '../../utils/env/env.dart';
 
@@ -63,28 +62,50 @@ final _exerciseSchema = {
 
 final _model = "llama-3.2-90b-text-preview";
 
-@singleton
+final _env = jsonEncode({
+  "mistralKey": Env.mistralKey,
+  "groqKey": Env.groqKey,
+  "supabaseUrl": Env.supabaseUrl,
+  "supabaseKey": Env.supabaseKey
+});
+
+
 class FitnessLLMService {
   JavascriptRuntime jsRuntime = getIt<JavascriptRuntime>();
 
-  @postConstruct
+
   void init() async {
-    await jsRuntime.evaluateAsync(
-        "await llmInvoker.init(${jsonEncode(_exerciseSchema)},$_model,${jsonEncode(Env)})");
+    try {
+      // Setup channel error handler
+      jsRuntime.onMessage("flutter-interop-channel", _errorHandler);
+
+      await jsRuntime.evaluateAsync(
+          "await llmInvoker.init(${jsonEncode(_exerciseSchema)},$_model,$_env)");
+      print("JS Runtime Init");
+      getExercisesForUser();
+    } catch (e) {
+      print("An occured during initialization $e");
+    }
   }
 
-  Future<String> getExercisesForUser(UserData user) async {
-try {
-    String response = (await jsRuntime.evaluateAsync(
-            "await llmInvoker.invoke({age:15, weight:151 height:${"6ft 1"}, optionalParameters:"
-            ", request:${"Give exercises for user"}})",
-            sourceUrl: "llm_invoker.js")
-    ).stringResult;
-
-    return response;
-  } catch(e){
-    print(e);
-    return "";
+  Future<String> getExercisesForUser() async {
+    try {
+      String response = (await jsRuntime.evaluateAsync(
+             """
+              await llmInvoker.invoke({age:15, weight:151, height:"6ft 1", optionalParameters:"", request:"Give exercises for user"})
+             """,
+              sourceUrl: "llm_invoker.js"))
+          .stringResult;
+      print(response);
+      return response;
+    } catch (e) {
+      print("An error ocurred while invoking getExercisesForUser $e");
+      return "";
+    }
   }
+
+  void _errorHandler(dynamic error) {
+    var errorObj = jsonDecode(error);
+    print("An error occurred over the interop channel $errorObj");
   }
 }
