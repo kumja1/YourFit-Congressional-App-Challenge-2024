@@ -5,6 +5,8 @@ We never managed to finish this app since we dont know flutter so we have decide
 
 ## How to build 
 ```flutter build apk```
+
+## Other info
 Requires a mistral api key and a groq api key.
 The database that the ai is trained on will be found in the AIDATA directory
 Attributions:
