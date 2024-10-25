@@ -10,7 +10,8 @@ class UserService {
     String id,
     String firstName,
     String lastName,
-    double height,
+    double weight,
+    int height,
     int age,
   ) {
     UserData user = UserData(
@@ -18,12 +19,12 @@ class UserService {
       firstName: firstName,
       lastName: lastName,
       age: age,
+      weight: weight,
       height: height,
       caloriesBurned: 0,
-      exerciseData: [],
+      exerciseData: {},
       milesTraveled: 0,
     );
-
 
     _supabase.from("user_data").insert(user.toJson());
 
@@ -37,11 +38,10 @@ class UserService {
   Future<UserData?> getUser(String id) async {
     Map<String, dynamic> response;
     try {
-      response = (await _supabase.from("user_data")
-      .select()
-      .eq("id", id))
-      .first;
-    } catch (_) {
+      response =
+          (await _supabase.from("user_data").select().eq("id", id)).first;
+    } catch (e) {
+      print(e);
       return null;
     }
 

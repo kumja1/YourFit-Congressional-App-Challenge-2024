@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_focus_watcher/flutter_focus_watcher.dart';
 import 'src/app_router.dart';
 import 'src/services/get_it/get_it.dart';
 import 'src/utils/constants.dart';
@@ -11,11 +12,12 @@ void main() async {
 class YourFitApp extends StatelessWidget {
   final _appRouter = getIt<AppRouter>();
 
-   YourFitApp({super.key});
+  YourFitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return FocusWatcher(
+        child: MaterialApp.router(
       routerConfig: _appRouter.config(),
       title: 'YourFit App',
       theme: ThemeData(
@@ -25,8 +27,6 @@ class YourFitApp extends StatelessWidget {
             dynamicSchemeVariant: DynamicSchemeVariant.fidelity),
         fontFamily: "Lilita",
       ),
-    );
+    ));
   }
 }
-
-

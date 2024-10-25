@@ -7,40 +7,41 @@ import 'app_router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
+        AutoRoute(path: "/main_screen", page: MainRoute.page, children: [
+          AutoRoute(path: "roadmap", page: RoadmapRoute.page),
+          AutoRoute(path: "profile", page: ProfileRoute.page),
+          AutoRoute(path: "exercises", page: ExercisesRoute.page),
+          AutoRoute(page: LandingRoute.page, path: "t")
+        ]),
         AutoRoute(
-          path: "/main",
-          page: MainRoute.page,
-          children: [
-            AutoRoute(path: "roadmap", page: RoadmapRoute.page),
-            AutoRoute(path: "profile", page: ProfileRoute.page),
-            AutoRoute(path: "friends", page: FriendsRoute.page),
-          ], 
-          initial: true, 
-        ),
-        AutoRoute(
-          path: "/settings",
+          path: "/settings_screen",
           page: SettingsRoute.page,
         ),
+      
         AutoRoute(
-          page: SplashRoute.page,
-          path: "/splash",
-          keepHistory: false,
-        ),
+            page: SplashRoute.page,
+            path: "/splash_screen",
+            keepHistory: false,
+            initial: true),
         AutoRoute(
           page: LandingRoute.page,
-          path: "/landing",
+          path: "/landing_screen",
           keepHistory: false,
         ),
         AutoRoute(
-          path: "/signin",
+          path: "/signin_screen",
           page: SigninRoute.page,
           keepHistory: false,
         ),
         AutoRoute(
-          path: "/signup",
+          path: "/signup_screen",
           page: SignupRoute.page,
           keepHistory: false,
         ),
+
+        AutoRoute(page: ResetPasswordRoute.page,path:"/reset_password_screen"
+        ),
+     
       ];
 
   @override

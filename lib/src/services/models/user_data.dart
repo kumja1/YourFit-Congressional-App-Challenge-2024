@@ -1,8 +1,12 @@
+import 'dart:convert';
 import 'dart:core';
+import 'package:flutter/material.dart';
 import 'package:yourfit/src/services/models/exercise.dart';
 
-class UserData {
+class UserData extends ChangeNotifier {
   final String id;
+
+  final DateTime? createdAt;
 
   final String firstName;
 
@@ -10,7 +14,9 @@ class UserData {
 
   final int age;
 
-  final double height;
+  final int height;
+
+  final double weight;
 
   final double caloriesBurned;
 
@@ -18,8 +24,7 @@ class UserData {
 
   // final int roadmapData;
 
-  final List<Exercise> exerciseData;
-  
+  final Map<String, Map<String, dynamic>> exerciseData;
 
   UserData({
     required this.id,
@@ -27,9 +32,10 @@ class UserData {
     required this.lastName,
     required this.age,
     required this.height,
+    required this.weight,
     required this.caloriesBurned,
     required this.milesTraveled,
-   // required this. ,
+    this.createdAt,
     required this.exerciseData,
   });
 
@@ -38,12 +44,14 @@ class UserData {
         firstName: json["first_name"],
         lastName: json["last_name"],
         age: json["age"],
-        caloriesBurned: json["calories_burned"],
+        caloriesBurned: json["calories_burned"].toDouble(),
         height: json["height"],
-        milesTraveled: json["miles_traveled"],
-       // roadmapIndex: json["roadmap_index"],
-        exerciseData: json["exercise_data"]
-            .map((exercise) => Exercise.fromJson(exercise)),
+        weight: json["weight"].toDouble(),
+        milesTraveled: json["miles_traveled"].toDouble(),
+        createdAt: DateTime.parse(json["created_at"]),
+        // roadmapIndex: json["roadmap_index"],
+        exerciseData:
+            !json["exercise_data"].isEmpty ? json["exercise_data"] : {},
       );
 
   Map<String, dynamic> toJson() {
@@ -52,9 +60,11 @@ class UserData {
       "age": age,
       "calories_burned": caloriesBurned,
       "height": height,
+      "weight": weight,
       "miles_traveled": milesTraveled,
-     // "roadmap_index": roadmapIndex,
-      "exercise_data": exerciseData.map((exercise) => exercise.toJson()),
+      "created_at": createdAt,
+      // "roadmap_index": roadmapIndex,
+      "exercise_data": jsonEncode(exerciseData)
     };
   }
 }

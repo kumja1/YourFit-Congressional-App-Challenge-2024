@@ -17,7 +17,8 @@ class _MainScreenState extends State<MainScreen> {
       routes: [
         RoadmapRoute(),
         ProfileRoute(),
-        FriendsRoute(),
+        ExercisesRoute(),
+        LandingRoute()
       ],
       bottomNavigationBuilder: (builder, router) {
         return NavigationBar(
@@ -42,6 +43,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ]);
       },
+      resizeToAvoidBottomInset: true,
     );
   }
 }

@@ -15,6 +15,14 @@ class AuthService {
     _userService = userService;
   }
 
+  Future<void> init() async {
+    try {
+      var session = await _auth.refreshSession();
+      currentUser = await _userService.getUser(session.user!.id);
+      _auth.onAuthStateChange.listen(_onAuthStateChange);
+    } catch (_) {}
+  }
+
   Future<void> loadSession() async {
     AuthResponse response = await _auth.refreshSession();
     if (response.user != null) {
@@ -22,17 +30,19 @@ class AuthService {
     }
   }
 
-  Future<void> signInWithEmail({
+  Future<bool> signInWithEmail({
     String? password,
     String? email,
-    required Function(Exception error) onError,
+    required Function(AuthException error) onError,
   }) async {
     try {
       AuthResponse response =
           await _auth.signInWithPassword(email: email, password: password!);
       currentUser = await _userService.getUser(response.user!.id);
+      return true;
     } on AuthException catch (e) {
       onError(e);
+      return false;
     }
   }
 
@@ -42,19 +52,20 @@ class AuthService {
     String firstName,
     String lastName,
     int age,
-    double height,
+    int height,
+    double weight,
     Function(Exception error) onError,
   ) async {
     try {
       User user = (await _auth.signUp(email: email, password: password)).user!;
 
       if (user.identities == null || user.identities!.isEmpty) {
-        onError(Exception("User already exist!"));
+        onError(AuthException("User already exist!"));
         return;
       }
 
-      currentUser =
-          _userService.createUser(user.id, firstName, lastName, height, age);
+      currentUser = _userService.createUser(
+          user.id, firstName, lastName, weight, height, age);
     } on AuthException catch (e) {
       onError(e);
     }
@@ -96,4 +107,14 @@ class AuthService {
 
     return response;
   }
-}
+
+  Future<void> resetPassword(String email) async =>
+      await _auth.resetPasswordForEmail(email);
+
+  void _onAuthStateChange(AuthState event) async {
+    // switch (event.event) {
+    //  case AuthChangeEvent.userUpdated:
+        currentUser = await _userService.getUser(event.session!.user.id);
+    }
+  }
+// }
