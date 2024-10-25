@@ -13,6 +13,7 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../app_router.dart' as _i342;
 import '../functions/auth_service.dart' as _i1007;
+import '../functions/fitness_service.dart' as _i945;
 import '../functions/user_service.dart' as _i180;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -28,8 +29,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i342.AppRouter>(() => _i342.AppRouter());
     gh.singleton<_i180.UserService>(() => _i180.UserService());
+    gh.singleton<_i945.FitnessLLMService>(
+        () => _i945.FitnessLLMService()..init());
     gh.singleton<_i1007.AuthService>(
-        () => _i1007.AuthService(gh<_i180.UserService>()));
+        () => _i1007.AuthService(gh<_i180.UserService>())..init());
     return this;
   }
 }

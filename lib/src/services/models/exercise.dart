@@ -1,22 +1,21 @@
-import '../../enums/index.dart';
-
 class Exercise {
-  final ExerciseType type;
-  final DateTime dayCompleted;
+  final bool isCompleted;
+  final int? timeLeft;
   final String name;
 
-  Exercise({required this.dayCompleted, required this.type, required this.name});
+  Exercise({
+    required this.timeLeft,
+    required this.name,
+    required this.isCompleted,
+  });
 
   factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
-      dayCompleted: DateTime.parse(json["dayCompleted"]),
-      type: ExerciseType.from(json["exercise_type"]),
-      name: json["name"]);
+        name: json["name"],
+        timeLeft: json["timeLeft"],
+        isCompleted: json["isCompleted"] ?? false,
+      );
 
   Map<String, dynamic> toJson() {
-    return {
-      "dayCompleted": dayCompleted.toString(),
-      "type": type.name,
-      "name": name
-    };
+    return {"name": name, "timeLeft": timeLeft, "isCompleted": isCompleted};
   }
 }

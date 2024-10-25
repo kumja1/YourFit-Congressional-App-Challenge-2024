@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:yourfit/src/services/functions/fitness_service.dart';
 import 'package:yourfit/src/services/functions/index.dart';
 import 'package:yourfit/src/utils/constants.dart';
 

@@ -13,10 +13,7 @@ dependencies:
 
   flutter:
     sdk: flutter
-  english_words: ^4.0.0
-  supabase_auth_ui: ^0.5.1
   envied: ^0.5.4+1
-  envied_flutter: ^0.3.0+1
   flutter_contacts: ^1.1.9+2
   supabase_flutter:
   get_it: ^8.0.0
@@ -25,14 +22,28 @@ dependencies:
   google_sign_in: ^6.2.1
   async_button_builder: ^3.0.0+1
   sign_in_with_apple: ^6.1.3
-  groq_sdk:
   auto_route: ^9.2.2
   typewritertext: ^3.0.9
-  flutter_animate: ^4.5.0
-  flutter_js: ^0.8.1
   ffi: ^2.1.3
   nice_buttons: ^0.0.3
-
+  zod_validation: ^1.0.5
+  flutter_focus_watcher: ^2.0.0
+  animated_snack_bar: ^0.4.0
+  langchain: ^0.7.7+1
+  langchain_core: ^0.3.6
+  langchain_community: ^0.3.2+1
+  langchain_openai: ^0.7.2+3
+  langchain_supabase: ^0.1.1+3
+  langchain_mistralai: ^0.2.3+1
+  shared_preferences: ^2.3.2
+  flutter_dotenv: ^5.2.1
+  groq:
+  mistralai_client_dart: ^1.0.0
+  onboarding: ^4.0.2
+  flutter_animation_progress_bar: ^2.3.1
+  text_wrap_auto_size: ^1.2.3
+  path_provider: ^2.1.4
+  provider: ^6.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,8 +60,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/js/
-    - assets/json/
 
   fonts:
     - family: Fredoka

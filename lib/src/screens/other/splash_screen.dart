@@ -31,8 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    _router.replaceNamed(
-        _authService.currentUser == null ? "/landing" : "/main");
+    Future.wait([
+      _authService.init(),
+      Future.delayed(const Duration(milliseconds: 2000)),
+    ]).then((_) => _router.replaceNamed(
+          _authService.currentUser == null ? "/landing_screen" : "/main_screen",
+        ));
   }
 }
