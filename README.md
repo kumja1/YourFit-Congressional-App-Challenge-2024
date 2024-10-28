@@ -15,7 +15,7 @@ Attributions:
  - [running_icon](https://www.flaticon.com/free-icons/fast)
 
 ## Requirements
-  * [Mistral API Key]("https://mistral.ai/"
+  * [Mistral API Key]("https://mistral.ai/")
   * Groq api key
    
     https://console.groq.com/
