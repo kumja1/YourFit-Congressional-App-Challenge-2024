@@ -1,6 +1,7 @@
 # YourFit
 AI fitness app 
 Submission for 2024 Congressional App Challenge
+This project uses the GNU license, feel free to edit as you wish
 We never managed to finish this app due to various challenges we encountered along the way(and it was our first time using flutter) so we have decided to open source it so feel free to contribute! The code is messy and the features arent really functioning at all so if anyone actually wants to make this happen itll be cool.
 
 ## How to build 
