@@ -9,7 +9,7 @@ We never managed to finish this app due to various challenges we encountered alo
 ## Other info
 Signin is testuser@yourfit.com, password:123
 
-The dataset that the AI was trained on can be found in ```assets/dataset.gz.csv```
+The dataset that the AI was trained on can be found in ```assets/data.csv.gz```
 
 Attributions:
  - [running_icon](https://www.flaticon.com/free-icons/fast)
