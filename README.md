@@ -14,3 +14,10 @@ The dataset that the AI was trained on can be found in ```assets/data.csv.gz```
 Attributions:
  - [running_icon](https://www.flaticon.com/free-icons/fast)
 
+## Requirements
+  * [Mistral API Key]("https://mistral.ai/"
+  * Groq api key
+   
+    https://console.groq.com/
+** Both are free services but you can pay for less rate limiting and other features **
+
