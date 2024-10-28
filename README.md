@@ -18,5 +18,6 @@ Attributions:
 ## Requirements
   * [Mistral API Key](https://mistral.ai/)
   * [Groq api key](https://console.groq.com/)
+  * Supabase (if you want a database, you could probably bypass this one. its free though
 ### Both are free services but you can pay for less rate limiting and other features 
 
